@@ -5,6 +5,35 @@
   color: var(--color-text);
   margin-left: 10%;
   margin-right: 10%;
+  padding-bottom: 50px; /* Add padding at the bottom */
+  position: relative; /* Ensure blur elements are positioned relative to the container */
+  z-index: 1; /* Ensure container content is above background */
+}
+
+.topBlur {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  min-width: 350px;
+  top: -128px;
+  left: -10vw;
+  border-radius: 764px;
+  background-color: var(--color-secondary);
+  filter: blur(100px);
+  z-index: -1; /* Keep blur behind the content */
+}
+
+.bottomBlur {
+  position: absolute;
+  width: 70vw;
+  height: 50vw;
+  min-width: 350px;
+  top: 246px;
+  right: -25vw;
+  border-radius: 764px;
+  background-color: var(--color-secondary);
+  filter: blur(100px);
+  z-index: -1; /* Keep blur behind the content */
 }
 
 .title {
@@ -23,4 +52,5 @@
   justify-content: center;
   gap: 15px;
   width: 100%;
+  z-index: 1; /* Keep projects above the blur */
 }

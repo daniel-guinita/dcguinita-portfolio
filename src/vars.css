@@ -1,11 +1,21 @@
 :root {
   /* Colours */
   --color-text: #fff;
-  --color-primary: #576cbc;
-  --color-secondary: #19376d;
-  --color-dark: #0b2447;
-  --color-bg: #04152d;
+  --color-primary: #3c5248;
+  --color-secondary: #a1b4ab;
+  --color-dark: #324842;
+  --color-bg: #42584e;
 
   /* Fonts */
   --font-roboto: "Roboto";
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; /* Ensure body spans the entire viewport width */
+  height: 100%; /* Ensure body spans the entire viewport height */
+  scroll-behavior: smooth; /* Enable smooth scrolling */
 }
