@@ -15,7 +15,7 @@ export const Hero = () => {
           <a href="mailto:edu.dcguinita@gmail.com" className={styles.emailnBtn} target="_blank" rel="noopener noreferrer">
             <img src={getImageUrl("contact/emailIcon.png")} alt="Email icon" />
           </a>
-          <a href="https://www.linkedin.com/dcguinita" className={styles.linkedinBtn} target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/dcguinita" className={styles.linkedinBtn} target="_blank" rel="noopener noreferrer">
             <img src={getImageUrl("contact/linkedinIcon.png")} alt="LinkedIn icon" />
           </a>
           <a href="https://www.github.com/daniel-guinita" className={styles.githubBtn} target="_blank" rel="noopener noreferrer">
