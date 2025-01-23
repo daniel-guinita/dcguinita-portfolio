@@ -1,12 +1,20 @@
 @import "../../vars.css";
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .container {
-  position: relative; /* Establish stacking context */
+  position: relative; /* Establish positioning context */
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-top: 49px;
-  z-index: 1; /* Ensure this container is above the blur */
+  z-index: 1;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -17,6 +25,9 @@
   align-items: flex-start;
   color: var(--color-text);
   z-index: 1;
+  max-width: 70%; /* Adjusted */
+  padding-right: 10%; /* Adjusted */
+  padding-bottom: 50px; /* Ensure enough space for the button group */
 }
 
 .title {
@@ -29,38 +40,49 @@
     rgba(255, 255, 255, 1) 70%,
     rgba(255, 255, 255, 0) 120%
   );
-
   -webkit-background-clip: text;
+  opacity: 0; /* Start hidden */
+  animation: fadeIn .5s ease-in forwards; /* Apply the animation */
+  animation-delay: .3s; /* Delay to sync with the description typing effect */
 }
 
 .description {
-  font-size: 30px;
+  font-size: 28px;
   font-family: var(--font-roboto);
   margin-bottom: 52px;
 }
 
 .buttonGroup {
+  position: relative; /* Position it relative within its current context */
   display: flex;
-  align-items: center; /* Align buttons vertically */
-  gap: 16px; /* Add spacing between buttons */
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0; /* Prevent it from shrinking */
+  opacity: 0; /* Initially hide the button group */
+  pointer-events: none; /* Make buttons unclickable */
+  transition: opacity 1.5s ease, pointer-events 1.5s ease; /* Smooth transition */
+}
+
+.buttonGroup.visible {
+  opacity: 1; /* Make button group visible */
+  pointer-events: auto; /* Make buttons clickable */
 }
 
 .resumeBtn {
   text-decoration: none;
   background-color: var(--color-dark);
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 100px;
   font-size: 30px;
   font-weight: 600;
   padding: 17px 26px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
   transition: background-color 0.4s ease;
+}
 
-  &:hover {
-    background-color: #FFFFFF;
-    color: #799688;
-    
-  }
+.resumeBtn:hover {
+  background-color: #ffffff;
+  color: #799688;
 }
 
 .emailBtn,
@@ -72,57 +94,32 @@
 }
 
 .heroImg {
-  width: 45%;
+  position: absolute;
+  top: 50%;
+  right: 5%; /* Move it left by decreasing the 'right' value */
+  transform: translateY(-50%);
+  width: 35%; /* Adjust based on your image touch-ups */
+  max-width: 400px; /* Adjust maximum size */
   z-index: 1;
   animation-name: floating;
   animation-duration: 3s;
-  
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-
-  /* Make the image circular */
   border-radius: 50%;
-  object-fit: cover; /* Ensures the image covers the circle without distortion */
-  overflow: hidden; /* Hides any overflow beyond the circle */
+  object-fit: cover;
+  overflow: hidden;
 }
 
 @keyframes floating {
   0% {
-    transform: translate(0, 0px);
+    transform: translateY(-50%) translateX(0) translateY(0);
   }
   50% {
-    transform: translate(0, 10px);
+    transform: translateY(-50%) translateX(0) translateY(10px);
   }
   100% {
-    transform: translate(0, -0px);
+    transform: translateY(-50%) translateX(0) translateY(0);
   }
-}
-
-.topBlur {
-  position: absolute;
-  width: 50vw;
-  height: 50vw;
-  min-width: 350px;
-  min-width: 350px;
-  top: -128px;
-  left: -10vw;
-  border-radius: 764px;
-  background-color: var(--color-secondary);
-  filter: blur(100px);
-  z-index: 0;
-}
-
-.bottomBlur {
-  position: absolute;
-  width: 70vw;
-  height: 50vw;
-  min-width: 350px;
-  top: 246px;
-  right: -25vw;
-  border-radius: 764px;
-  background-color: var(--color-secondary);
-  filter: blur(100px);
-  z-index: -1; /* Place behind content */
 }
 
 @media screen and (max-width: 830px) {
@@ -131,6 +128,27 @@
   }
 
   .content {
+    max-width: 100%;
+    padding-right: 0;
     align-items: center;
+  }
+
+  .title,
+  .description {
+    text-align: center;
+  }
+
+  .heroImg {
+    position: static;
+    transform: none;
+    width: 70%;
+    max-width: none;
+    margin-top: 20px;
+  }
+
+  .buttonGroup {
+    position: static; /* Revert to normal flow */
+    transform: none;  /* Remove transform */
+    margin-top: 20px; /* Add spacing */
   }
 }
