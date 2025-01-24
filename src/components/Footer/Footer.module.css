@@ -1,7 +1,7 @@
 .footer {
-  background-color: #ffffff; /* Dark blue */
-  color: var(--color-dark); /* White text */
-  padding: 20px 10%;
+  background-color: var(--color-dark); /* Dark blue */
+  color: #FFF; /* White text */
+  padding: 15px 10%;
   text-align: center;
   position: relative;
   bottom: 0;
@@ -22,7 +22,7 @@
 }
 
 .link {
-  color: #324842; /* Green color */
+  color: #ffffff; /* Green color */
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
