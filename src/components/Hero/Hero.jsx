@@ -9,30 +9,33 @@ export const Hero = () => {
       <div className={styles.content}>
         <h3 className={styles.title}>Hi!</h3>
         <p className={styles.description}>
-          <Typewriter
-            onInit={(typewriter) => {
-              setTimeout(() => {
-                typewriter
-                  .typeString(
-                    "I'm Daniel Guinita, a 4th year Information Technology student, passionate about various fields in the tech industry.<br/>(Cybersecurity, IT Ops, Networking, QA Testing, Web Development)"
-                  )
-                  .callFunction(() => {
-                    const buttonGroup = document.querySelector(
-                      `.${styles.buttonGroup}`
-                    );
-                    buttonGroup.style.opacity = 1;
-                    buttonGroup.classList.add(`${styles.visible}`);
-                  })
-                  .start();
-              }, 1000); // 1-second delay
-            }}
-            options={{
-              autoStart: true,
-              loop: false, // Prevents looping
-              delay: 25, // Adjust typing speed
-            }}
-          />
-        </p>
+  <div style={{ height: '150px', overflow: 'hidden' }}>
+    <Typewriter
+      onInit={(typewriter) => {
+        setTimeout(() => {
+          typewriter
+            .typeString(
+              "I'm Daniel Guinita, a 4th year Information Technology student, passionate about various fields in the tech industry.<br/>(Cybersecurity, IT Ops, Networking, QA Testing, Web Development)"
+            )
+            .callFunction(() => {
+              const buttonGroup = document.querySelector(
+                `.${styles.buttonGroup}`
+              );
+              buttonGroup.style.opacity = 1;
+              buttonGroup.classList.add(`${styles.visible}`);
+            })
+            .start();
+        }, 1000); // 1-second delay
+      }}
+      options={{
+        autoStart: true,
+        loop: false, // Prevents looping
+        delay: 25, // Adjust typing speed
+      }}
+    />
+  </div>
+</p>
+
         <div className={styles.buttonGroup}>
           <a
             href="mailto:edu.dcguinita@gmail.com"

@@ -50,7 +50,11 @@
   font-size: 28px;
   font-family: var(--font-roboto);
   margin-bottom: 52px;
+  line-height: 1.5;
+  height: 150px; /* Set a fixed height to prevent layout shifts */
+  overflow: hidden; /* Ensures that excess content doesn't spill out */
 }
+
 
 .buttonGroup {
   position: relative; /* Position it relative within its current context */

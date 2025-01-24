@@ -2,23 +2,85 @@
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Change to row to place panels side by side */
   border-radius: 10px;
   background: #324842;
   box-shadow: 0 16px 14px 0 #324842;
   padding: 18px 24px;
-  max-width: 450px; /* Increase this value to make the box wider */
+  max-width: 100%; /* Make the project card container full width */
   height: auto;
   position: relative; /* Ensure z-index works properly */
 }
 
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-dark);
+  opacity: 0.7; /* Adjust the opacity to make it more transparent */
+  border-radius: 20px;
+  z-index: -1; /* Ensure the pseudo-element is behind the content */
+}
+
+.leftPanel {
+  flex: 1; /* Allow left panel to take up available space */
+  position: relative; /* Ensure stacking context */
+  overflow: hidden; /* Ensure pseudo-element fits within borders */
+}
+
+.leftPanel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-dark);
+  opacity: 0.7; /* Adjust the opacity to make it more transparent */
+  z-index: -2; /* Ensure the pseudo-element is behind the content */
+}
+
+.rightPanel {
+  flex: 1.2; /* Allow right panel to take up more space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensure stacking context */
+  overflow: hidden; /* Ensure pseudo-element fits within borders */
+}
+
+.rightPanel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-dark);
+  opacity: 0.7; /* Adjust the opacity to make it more transparent */
+  z-index: -2; /* Ensure the pseudo-element is behind the content */
+}
+
 .image {
-  margin-bottom: 26px;
+  max-width: 60%; /* Adjust the logo size to be smaller */
+  height: auto;
+  align-items: center;
+  margin-bottom: 26px; /* Add margin to the bottom of the image */
+}
+
+.screenshot {
+  max-width: 90%; /* Increase the max width of the screenshot */
+  height: auto;
+  border-radius: 10px;
 }
 
 .title {
   font-size: 25px;
   font-weight: 700;
+  margin-top: 0; /* Remove top margin */
 }
 
 .description {
@@ -49,7 +111,8 @@
   width: 100%;
   margin-top: 26px;
   display: flex;
-  justify-content: space-around;
+  gap:15px;
+  justify-content: left;
 }
 
 .link {
@@ -65,4 +128,24 @@
 .link:hover {
   transform: scale(1.05);
   transition: transform 0.4s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appear {
+  opacity: 0;
+  animation: appear 0.6s forwards;
+}
+
+.hidden {
+  opacity: 0;
 }

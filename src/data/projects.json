@@ -4,6 +4,8 @@
     "imageSrc": "projects/mathhew.png",
     "description": "Math-hew is a web application designed to make 4th grade Mathematics fun and engaging.",
     "skills": ["React", "Nest", "MySQL"],
-    "source": "https://github.com/daniel-guinita/Math-hew"
+    "source": "https://github.com/daniel-guinita/Math-hew",
+    "screenshot": "projects/screenshot.png"
   }
 ]
+
